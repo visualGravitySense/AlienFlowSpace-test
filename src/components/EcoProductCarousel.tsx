@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getAssetPath } from '@/lib/utils';
 
 interface EcoProduct {
   name: string;
@@ -13,37 +14,37 @@ const EcoProductCarousel = () => {
   const products: EcoProduct[] = [
     {
       name: "Cannabis Leaf Earrings",
-      image: "/lovable-uploads/eco-earrings.jpg",
+      image: getAssetPath("/lovable-uploads/eco-earrings.jpg"),
       description: "Sterling silver hexagon earrings with 24k gold cannabis leaf design"
     },
     {
       name: "Orange Eco Trucker Hat",
-      image: "/lovable-uploads/eco-hat-orange.png", 
+      image: getAssetPath("/lovable-uploads/eco-hat-orange.png"), 
       description: "Sustainable trucker hat with embroidered alien cannabis logo"
     },
     {
       name: "Navy Alien Hat",
-      image: "/lovable-uploads/eco-hat-navy.png",
+      image: getAssetPath("/lovable-uploads/eco-hat-navy.png"),
       description: "Premium navy trucker hat with golden alien symbol"
     },
     {
       name: "Organic Bucket Hat",
-      image: "/lovable-uploads/eco-bucket-hat.png",
+      image: getAssetPath("/lovable-uploads/eco-bucket-hat.png"),
       description: "100% organic cotton bucket hat with eco-friendly design"
     },
     {
       name: "Organic Baseball Cap",
-      image: "/lovable-uploads/eco-baseball-cap.png",
+      image: getAssetPath("/lovable-uploads/eco-baseball-cap.png"),
       description: "Sustainable baseball cap with embroidered alien logo"
     },
     {
       name: "Classic Snapback",
-      image: "/lovable-uploads/eco-snapback.png",
+      image: getAssetPath("/lovable-uploads/eco-snapback.png"),
       description: "Black and teal snapback with geometric alien symbol"
     },
     {
       name: "Camo Dad Hat",  
-      image: "/lovable-uploads/eco-dad-hat.png",
+      image: getAssetPath("/lovable-uploads/eco-dad-hat.png"),
       description: "Green camo dad hat with cannabis leaf embroidery"
     }
   ];
