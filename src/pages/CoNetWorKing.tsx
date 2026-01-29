@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
 import DAODashboard from '@/components/DAODashboard';
+import { getAssetPath } from '@/lib/utils';
 type ServiceProps = {
   title: string;
   description: string;
@@ -101,7 +102,7 @@ const PartnerSection: React.FC<PartnerSectionProps> = ({ title, partners, color,
                   transition={{ duration: 0.3 }}
                 >
                   <a href={partner.url} target="_blank" rel="noopener noreferrer">
-                    <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain p-1" />
+                    <img src={partner.logo.startsWith("/lovable-uploads/") ? getAssetPath(partner.logo) : partner.logo} alt={partner.name} className="w-full h-full object-contain p-1" />
                   </a>
                 </motion.div>
                 <CardTitle className={`${colors.text} font-[Atomic Age] text-lg`}>
@@ -457,7 +458,7 @@ const CoNetWorKing: React.FC = () => {
           {/* Hero Section - No box, just content */}
           <div className="text-center mb-20">
             <div className="inline-flex items-center justify-center w-24 h-24 bg-alien-gold/20 rounded-full mb-6 border-2 border-alien-gold/40 backdrop-blur-md">
-              <img src="/lovable-uploads/CoNetWorKingLogo.png" alt="CoNetWorKing Official Logo" className="h-16 w-16 object-contain" />
+              <img src={getAssetPath("/lovable-uploads/CoNetWorKingLogo.png")} alt="CoNetWorKing Official Logo" className="h-16 w-16 object-contain" />
             </div>
             <h1 className="md:text-7xl font-bold text-alien-green mb-8 font-[Atomic Age, Star Wars] drop-shadow-[0_0_30px_rgba(3,255,25,0.6)] text-4xl">
               CoNetWorKing
@@ -862,7 +863,7 @@ const CoNetWorKing: React.FC = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <Avatar className="mx-auto mb-4 w-20 h-20 border-2 border-alien-gold">
-                            <AvatarImage src={member.avatar} alt={member.name} />
+                            <AvatarImage src={member.avatar.startsWith("/lovable-uploads/") ? getAssetPath(member.avatar) : member.avatar} alt={member.name} />
                             <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                           </Avatar>
                         </motion.div>

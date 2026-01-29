@@ -2,6 +2,7 @@ import React from 'react';
 import { GraduationCap, BookOpen, Video, Users, Award, Sparkles, Leaf, Brain, Coins, ShoppingCart, Heart, Lightbulb, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { getAssetPath } from '@/lib/utils';
 
 const CourseCard = ({
   title,
@@ -85,7 +86,7 @@ const PartnerCard = ({
       {logoUrl ? (
         <div className="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
           <img 
-            src={logoUrl} 
+            src={logoUrl.startsWith("/lovable-uploads/") ? getAssetPath(logoUrl) : logoUrl} 
             alt={`${name} logo`} 
             className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300" 
             onError={e => {
@@ -229,7 +230,7 @@ const Academy: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-alien-gold/20 rounded-full mb-6 border-2 border-alien-gold/40 backdrop-blur-md">
-              <img src="/lovable-uploads/AcademyLogo.png" alt="Academy Official Logo" className="h-14 w-14 object-contain" />
+              <img src={getAssetPath("/lovable-uploads/AcademyLogo.png")} alt="Academy Official Logo" className="h-14 w-14 object-contain" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 font-nasalization text-glow text-alien-green">
               Academy

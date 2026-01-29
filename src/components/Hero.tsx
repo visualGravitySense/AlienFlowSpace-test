@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ScrollText, Globe, Orbit } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getAssetPath } from '@/lib/utils';
 
 const Hero: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -26,7 +27,7 @@ const Hero: React.FC = () => {
       <div className="container relative z-10 px-4 mx-auto text-center max-w-6xl">
         {/* Floating logo */}
         <motion.img
-          src="/lovable-uploads/ALogo.png"
+          src={getAssetPath("/lovable-uploads/ALogo.png")}
           alt="AlienFlowSpaceDAO Logo"
           className="h-20 sm:h-24 md:h-28 logo-glow z-20 mb-6 sm:mb-8 mx-auto"
           initial={{ scale: 0.9, opacity: 0 }}
