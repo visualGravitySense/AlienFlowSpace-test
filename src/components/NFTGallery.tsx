@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Image as ImageIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { getAssetPath } from '@/lib/utils';
 
 const NFT_COLLECTIONS = [
   {
@@ -10,7 +11,7 @@ const NFT_COLLECTIONS = [
     name: 'Alien69Flow',
     description: 'Main collection featuring unique alien-themed digital art and collectibles.',
     url: 'https://opensea.io/es/Alien69Flow',
-    image: '/lovable-uploads/ALogo.png',
+    image: getAssetPath('/lovable-uploads/ALogo.png'),
     items: '50+ NFTs'
   },
   {
@@ -18,16 +19,16 @@ const NFT_COLLECTIONS = [
     name: 'AlienFlowSpace',
     description: 'Exclusive DAO membership tokens and space-themed collectibles.',
     url: 'https://opensea.io/es/AlienFlowSpace',
-    image: '/lovable-uploads/CoNetWorKingLogo.png',
+    image: getAssetPath('/lovable-uploads/CoNetWorKingLogo.png'),
     items: '30+ NFTs'
   }
 ];
 
 const NFT_ITEMS = [
-  { name: 'Cosmic Voyager #001', price: '0.05 ETH', image: '/lovable-uploads/ET.png' },
-  { name: 'Space Genesis', price: '0.08 ETH', image: '/lovable-uploads/VC.png' },
-  { name: 'Alien Portal', price: '0.12 ETH', image: '/lovable-uploads/AW.png' },
-  { name: 'Digital Domain', price: '0.03 ETH', image: '/lovable-uploads/AP1.avif' }
+  { name: 'Cosmic Voyager #001', price: '0.05 ETH', image: getAssetPath('/lovable-uploads/ET.png') },
+  { name: 'Space Genesis', price: '0.08 ETH', image: getAssetPath('/lovable-uploads/VC.png') },
+  { name: 'Alien Portal', price: '0.12 ETH', image: getAssetPath('/lovable-uploads/AW.png') },
+  { name: 'Digital Domain', price: '0.03 ETH', image: getAssetPath('/lovable-uploads/AP1.avif') }
 ];
 
 const NFTGallery: React.FC = () => {

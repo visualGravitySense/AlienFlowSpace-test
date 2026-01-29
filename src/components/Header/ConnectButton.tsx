@@ -5,10 +5,11 @@ import { Brain, Copy, CheckCircle } from 'lucide-react';
 import { useWalletConnection } from '@/hooks/useWalletConnection';
 import { regenerateAIKey } from '@/utils/aiKeyGenerator';
 import { toast } from 'sonner';
+import { getAssetPath } from '@/lib/utils';
 
-const WALLET_ICON = "/lovable-uploads/AW.png";
-const PORTAL_ICON_AVIF = "/lovable-uploads/AP1.avif";
-const PORTAL_ICON_JPG = "/lovable-uploads/AP.jpg";
+const WALLET_ICON = getAssetPath("/lovable-uploads/AW.png");
+const PORTAL_ICON_AVIF = getAssetPath("/lovable-uploads/AP1.avif");
+const PORTAL_ICON_JPG = getAssetPath("/lovable-uploads/AP.jpg");
 const ICON_SIZE = "h-7 w-7 sm:h-8 sm:w-8";
 
 const shortAddress = (addr: string) =>

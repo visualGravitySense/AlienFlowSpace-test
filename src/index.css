@@ -130,7 +130,7 @@
 
 /* Background & Stars */
 .bg-stars {
-  background: black url('/lovable-uploads/stars-bg.png') repeat;
+  background: black var(--stars-bg-url, url('/lovable-uploads/stars-bg.png')) repeat;
   animation: moveStars 200s linear infinite;
 }
 
