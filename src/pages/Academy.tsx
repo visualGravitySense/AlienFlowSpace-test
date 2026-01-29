@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { GraduationCap, BookOpen, Video, Users, Award, Sparkles, Leaf, Brain, Coins, ShoppingCart, Heart, Lightbulb, ExternalLink, Search, Filter, Star, TrendingUp, Globe, Zap, GraduationCap as GradCap, ChevronLeft, ChevronRight } from 'lucide-react';
+import { GraduationCap, BookOpen, Video, Users, Award, Sparkles, Leaf, Brain, Coins, ShoppingCart, Heart, Lightbulb, ExternalLink, Search, Filter, Star, TrendingUp, Globe, Zap, GraduationCap as GradCap, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -30,57 +30,96 @@ const CourseCard = ({
     topics: string[];
   }>;
   color: string;
-}) => (
-  <Card className="bg-alien-space-dark/80 backdrop-blur-lg border-alien-gold/30 hover:border-alien-gold/60 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-alien-gold/10 group relative">
-    <div className={`h-1 ${color} rounded-t-lg`}></div>
-    <CardHeader className="pb-4">
-      <div className="flex items-start justify-between mb-4">
-        <div className="p-3 bg-alien-space-light/60 rounded-xl group-hover:bg-alien-gold/20 transition-colors duration-300 border border-alien-gold/20">
-          {icon}
-        </div>
-        <div className="flex space-x-2">
-          <span className="px-3 py-1 text-xs bg-alien-space-light/60 rounded-full text-alien-green border border-alien-green/30 font-medium">
-            {modules.length} modules
-          </span>
-        </div>
-      </div>
-      <CardTitle className="text-xl font-semibold font-nasalization group-hover:text-alien-gold-light transition-colors text-alien-green">
-        {title}
-      </CardTitle>
-      <CardDescription className="text-gray-300 text-sm leading-relaxed">
-        {description}
-      </CardDescription>
-    </CardHeader>
-    
-    <CardContent className="pt-0">
-      <div className="space-y-3 mb-6">
-        {modules.map((module, index) => (
-          <div key={index} className="bg-alien-space-light/40 rounded-lg p-3 border border-alien-gold/10 hover:border-alien-gold/20 transition-colors">
-            <h4 className="text-alien-gold text-sm font-semibold mb-2 flex items-center">
-              <span className="w-6 h-6 bg-alien-gold/20 rounded-full flex items-center justify-center text-xs mr-2 border border-alien-gold/30">
-                {index + 1}
-              </span>
-              {module.name}
-            </h4>
-            <ul className="text-xs text-gray-300 space-y-1 ml-8">
-              {module.topics.map((topic, topicIndex) => (
-                <li key={topicIndex} className="flex items-start leading-relaxed">
-                  <span className="text-alien-green mr-2 mt-1">·</span>
-                  <span className="flex-1">{topic}</span>
-                </li>
-              ))}
-            </ul>
+}) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <Card className="bg-alien-space-dark/80 backdrop-blur-lg border-alien-gold/30 hover:border-alien-gold/60 transition-all duration-300 hover:shadow-2xl hover:shadow-alien-gold/10 group relative overflow-hidden">
+      <div className={`h-1 ${color} rounded-t-lg`}></div>
+      <CardHeader className="pb-4">
+        <div className="flex items-start justify-between mb-4">
+          <div className="p-3 bg-alien-space-light/60 rounded-xl group-hover:bg-alien-gold/20 transition-colors duration-300 border border-alien-gold/20">
+            {icon}
           </div>
-        ))}
-      </div>
-      
-      <Button variant="outline" className="w-full border-alien-gold/40 text-alien-gold hover:bg-alien-gold/15 hover:border-alien-gold/60 transition-all duration-300 font-medium">
-        <BookOpen className="w-4 h-4 mr-2" />
-        Explore Course
-      </Button>
-    </CardContent>
-  </Card>
-);
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 text-xs bg-alien-space-light/60 rounded-full text-alien-green border border-alien-green/30 font-medium">
+              {modules.length} modules
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setExpanded(!expanded)}
+              className="h-8 w-8 p-0 text-alien-gold hover:text-alien-green hover:bg-alien-gold/10 border border-alien-gold/30 rounded-lg shrink-0"
+              aria-label={expanded ? 'Colapsar' : 'Expandir'}
+              title={expanded ? 'Colapsar' : 'Expandir'}
+            >
+              {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
+          </div>
+        </div>
+        <CardTitle className="text-xl font-semibold font-nasalization group-hover:text-alien-gold-light transition-colors text-alien-green">
+          {title}
+        </CardTitle>
+        <CardDescription className="text-gray-300 text-sm leading-relaxed line-clamp-3">
+          {description}
+        </CardDescription>
+      </CardHeader>
+
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <CardContent className="pt-0">
+              <div className="space-y-3 mb-6">
+                {modules.map((module, index) => (
+                  <div key={index} className="bg-alien-space-light/40 rounded-lg p-3 border border-alien-gold/10 hover:border-alien-gold/20 transition-colors">
+                    <h4 className="text-alien-gold text-sm font-semibold mb-2 flex items-center">
+                      <span className="w-6 h-6 bg-alien-gold/20 rounded-full flex items-center justify-center text-xs mr-2 border border-alien-gold/30">
+                        {index + 1}
+                      </span>
+                      {module.name}
+                    </h4>
+                    <ul className="text-xs text-gray-300 space-y-1 ml-8">
+                      {module.topics.map((topic, topicIndex) => (
+                        <li key={topicIndex} className="flex items-start leading-relaxed">
+                          <span className="text-alien-green mr-2 mt-1">·</span>
+                          <span className="flex-1">{topic}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <Button variant="outline" className="w-full border-alien-gold/40 text-alien-gold hover:bg-alien-gold/15 hover:border-alien-gold/60 transition-all duration-300 font-medium">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Explore Course
+              </Button>
+            </CardContent>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {!expanded && (
+        <CardContent className="pt-0">
+          <Button
+            variant="outline"
+            onClick={() => setExpanded(true)}
+            className="w-full border-alien-gold/40 text-alien-gold hover:bg-alien-gold/15 hover:border-alien-gold/60 transition-all duration-300 font-medium"
+          >
+            <ChevronDown className="w-4 h-4 mr-2" />
+            Ampliar el programa
+          </Button>
+        </CardContent>
+      )}
+    </Card>
+  );
+};
 
 // Enhanced Partner type with Fogg Model elements
 type PartnerCategory = 'academy' | 'tech' | 'space' | 'science' | 'education' | 'all';
@@ -434,7 +473,7 @@ const Academy: React.FC = () => {
             <p className="text-gray-300 text-center mb-12 font-[Exo]">
               Explore our comprehensive training programs
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               {courses.map((course, index) => (
                 <CourseCard key={index} {...course} />
               ))}
