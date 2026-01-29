@@ -1,0 +1,620 @@
+import React from 'react';
+import FeaturedClubCard from '@/components/FeaturedClubCard';
+import EcoProductCarousel from '@/components/EcoProductCarousel';
+import { Users, Rocket, Calendar, Zap, Shield, DollarSign, Leaf, Gamepad2, Music, Heart, Eye, Dna, Database, FlaskConical } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+type ClubProps = {
+  name: string;
+  description: string;
+  members: number;
+  icon: React.ReactNode;
+  category: string;
+  categoryColor: string;
+  bgColor: string;
+};
+
+const ClubCard = ({ club }: { club: ClubProps }) => (
+  <div className={`${club.bgColor} p-6 rounded-xl backdrop-blur-md overflow-hidden relative group hover:transform hover:scale-[1.02] transition-all duration-300 border border-alien-gold/20 hover:border-alien-gold/40`}>
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-alien-space-dark/60 to-alien-space-dark/90 z-0"></div>
+    
+    <div className="relative z-10">
+      <div className="flex justify-between items-start mb-6">
+        <div className="p-4 bg-alien-space-dark/80 rounded-xl backdrop-blur-md border border-alien-gold/30 group-hover:border-alien-gold/50 transition-all duration-300">
+          {club.icon}
+        </div>
+        <span className={`px-3 py-1 text-xs ${club.categoryColor} rounded-full font-medium backdrop-blur-sm`}>
+          {club.category}
+        </span>
+      </div>
+
+      <h3 className="text-xl font-bold text-alien-gold mb-3 font-nasalization group-hover:text-alien-gold-light transition-colors">
+        {club.name}
+      </h3>
+      <p className="text-gray-200 mb-6 text-sm font-[Exo] leading-relaxed">
+        {club.description}
+      </p>
+
+      <div className="flex justify-between items-center">
+        <div className="flex items-center bg-alien-space-dark/60 px-3 py-2 rounded-full backdrop-blur-sm">
+          <Users className="h-4 w-4 text-alien-green mr-2" />
+          <span className="text-sm text-alien-green font-medium">
+            {club.members.toLocaleString()} members
+          </span>
+        </div>
+        <Button variant="outline" className="border-alien-gold/50 text-alien-gold hover:bg-alien-gold/20 hover:border-alien-gold text-sm px-4 py-2 h-auto font-[Exo] font-medium backdrop-blur-sm">
+          Join Club
+        </Button>
+      </div>
+    </div>
+  </div>
+);
+
+const Clubs: React.FC = () => {
+  const featuredClubs = [
+    {
+      name: 'Δ ArtFlow',
+      description: 'Harmonizing the multiverse through decentralized music creation, NFT releases, and community-driven audio experiences.',
+      members: 18654,
+      icon: <Music className="h-6 w-6 text-alien-gold" />,
+      category: 'Music & Art NFTs',
+      categoryColor: 'bg-indigo-500/80 text-white border border-indigo-400/50',
+      bgColor: 'bg-gradient-to-br from-indigo-900/40 to-blue-900/40',
+      sections: [{
+        title: 'Music & Audio Platforms',
+        description: 'Decentralized music streaming, NFT releases, and artist monetization platforms',
+        icon: <Music className="h-4 w-4" />,
+        color: 'bg-indigo-600/80',
+        platforms: [{
+          name: 'Audius',
+          url: 'https://audius.co/',
+          icon: '/lovable-uploads/Clubs/Audius.svg',
+          description: 'Decentralized music streaming with artist NFTs'
+        }, {
+          name: 'Sound.xyz',
+          url: 'https://sound.xyz/',
+          icon: '/lovable-uploads/Clubs/SoundXYZ.svg',
+          description: 'Limited edition music NFTs and releases'
+        }, {
+          name: 'SoundCloud',
+          url: 'https://soundcloud.com/',
+          icon: '/lovable-uploads/Clubs/Soundcloud.svg',
+          description: 'Global music sharing and discovery platform'
+        }, {
+          name: 'Spotify',
+          url: 'https://open.spotify.com/',
+          icon: '/lovable-uploads/Clubs/Spotify.svg',
+          description: 'Leading music streaming service worldwide'
+        }, {
+          name: 'YouTube',
+          url: 'https://youtube.com/',
+          icon: '/lovable-uploads/Clubs/YouTube.svg',
+          description: 'Video and music content sharing platform'
+        }]
+      }]
+    },
+    {
+      name: 'Δ CashFlow',
+      description: 'Advanced earning strategies and winning analysis for interplanetary assets through AI Agents, Automated Market Makers, BioFi, DeFi, DePin, DeSci protocols, Mining, ReFi, RWA, SocialFi, Staking, yield farming, and strategic portfolio management.',
+      members: 314159,
+      icon: <DollarSign className="h-6 w-6 text-alien-gold" />,
+      category: 'CashFlow',
+      categoryColor: 'bg-blue-500/80 text-white border border-blue-400/50',
+      bgColor: 'bg-gradient-to-br from-blue-900/40 to-purple-900/40',
+      sections: [{
+        title: 'Card Wallets (MasterCard & VISA)',
+        description: 'Crypto debit cards for everyday spending with cashback rewards and banking features',
+        icon: <DollarSign className="h-4 w-4" />,
+        color: 'bg-blue-600/80',
+        platforms: [{
+          name: 'Binance',
+          url: 'https://binance.com/',
+          icon: '/lovable-uploads/Clubs/Binance.svg',
+          description: 'Crypto trading with card and earn rewards'
+        }, {
+          name: 'BingX',
+          url: 'https://bingx.com/referral-program/QCXRKM',
+          icon: '/lovable-uploads/Clubs/BingX.png',
+          description: 'Copy trading platform with crypto card'
+        }, {
+          name: 'Bitget',
+          url: 'https://www.bitgetapp.com/referral/register?clacCode=42E67C3N',
+          icon: '/lovable-uploads/Clubs/Bitget.png',
+          description: 'Trading and rewards with crypto card'
+        }, {
+          name: 'Bybit',
+          url: 'https://www.bybit.com/invite?ref=Q15Q4M',
+          icon: '/lovable-uploads/Clubs/Bybit.png',
+          description: 'Derivatives trading with card benefits'
+        }, {
+          name: 'Coinbase',
+          url: 'https://www.coinbase.com/join/EC2PSZT?src',
+          icon: '/lovable-uploads/Clubs/Coinbase.svg',
+          description: 'US-based exchange with debit card'
+        }, {
+          name: 'Crypto.com',
+          url: 'https://crypto.com/app/una5xskncn',
+          icon: '/lovable-uploads/Clubs/Cryptocom.svg',
+          description: 'Visa card with up to 8% cashback'
+        }, {
+          name: 'Gemini',
+          url: 'https://www.gemini.com/',
+          description: 'Regulated exchange with credit card'
+        }, {
+          name: 'Nexo',
+          url: 'https://nexo.com/ref/x6ts3r0kb2?src',
+          icon: '/lovable-uploads/Clubs/NexoLogo.svg',
+          description: 'Crypto-backed card with instant credit'
+        }, {
+          name: 'Pionex',
+          url: 'https://www.pionex.com/es/signUp?r=0TTkucC3Gy7',
+          icon: '/lovable-uploads/Clubs/PionexLogo.svg',
+          description: 'Trading bots with crypto card access'
+        }, {
+          name: 'Revolut',
+          url: 'https://www.revolut.com/',
+          description: 'Banking app with crypto and card'
+        }, {
+          name: 'Wirex',
+          url: 'https://wirexapp.com/',
+          description: 'Multi-currency card with crypto rewards'
+        }]
+      }, {
+        title: 'Cold Hard Wallets',
+        description: 'Maximum security hardware wallets with offline storage and multi-signature support',
+        icon: <Shield className="h-4 w-4" />,
+        color: 'bg-gray-600/80',
+        platforms: [{
+          name: 'Ledger',
+          url: 'https://www.ledger.com/',
+          icon: '/lovable-uploads/Clubs/Ledger.jpg',
+          description: 'Hardware security with Nano devices'
+        }, {
+          name: 'Material Bitcoin',
+          url: 'https://materialbitcoin.com/AlienFlowSpace',
+          icon: '/lovable-uploads/Clubs/MaterialBitcoin.png',
+          description: 'Premium metal wallet storage'
+        }, {
+          name: 'SafePal',
+          url: 'https://www.safepal.com/',
+          icon: '/lovable-uploads/Clubs/SafePal.png',
+          description: 'Affordable hardware wallet solution'
+        }, {
+          name: 'Trezor',
+          url: 'https://trezor.io/',
+          icon: '/lovable-uploads/Clubs/Trezor.svg',
+          description: 'Open-source hardware wallet security'
+        }]
+      }, {
+        title: 'Hot Wallets',
+        description: 'User-friendly mobile and browser wallets for quick trading and DeFi access',
+        icon: <Zap className="h-4 w-4" />,
+        color: 'bg-orange-600/80',
+        platforms: [{
+          name: 'Atomic Wallet',
+          url: 'https://atomicwallet.io/',
+          icon: '/lovable-uploads/Clubs/AtomicWallet.svg',
+          description: 'Non-custodial multi-chain wallet'
+        }, {
+          name: 'Base',
+          url: 'https://www.base.org/',
+          icon: '/lovable-uploads/Clubs/Coinbase.svg',
+          description: 'Coinbase L2 for low-cost transactions'
+        }, {
+          name: 'Bitget Wallet',
+          url: 'https://newshare.bwb.global/es_es/referralLanding?inviteCode=cmR3qk&utm_source=newInviteRebate&type=card',
+          icon: '/lovable-uploads/Clubs/Bitget.png',
+          description: 'Multi-chain DeFi wallet'
+        }, {
+          name: 'Crypto Onchain',
+          url: 'https://crypto.com/onchain',
+          icon: '/lovable-uploads/Clubs/Cryptocom.svg',
+          description: 'Crypto.com self-custody wallet'
+        }, {
+          name: 'Exodus',
+          url: 'https://www.exodus.com/',
+          icon: '/lovable-uploads/Clubs/Exodus.svg',
+          description: 'Beautiful desktop and mobile wallet'
+        }, {
+          name: 'Kraken Wallet',
+          url: 'https://www.kraken.com/wallet',
+          icon: '/lovable-uploads/Clubs/Kraken.svg',
+          description: 'Self-custody with DeFi access'
+        }, {
+          name: 'MetaMask',
+          url: 'https://metamask.io/',
+          icon: '/lovable-uploads/Clubs/MetaMask.svg',
+          description: 'Leading Ethereum and EVM wallet'
+        }, {
+          name: 'OKX',
+          url: 'https://my.okx.com/join/11556162',
+          icon: '/lovable-uploads/Clubs/OKX.svg',
+          description: 'Web3 wallet with DeFi integration'
+        }, {
+          name: 'Phantom',
+          url: 'https://phantom.com',
+          icon: '/lovable-uploads/Clubs/PhantomLogo.svg',
+          description: 'Solana ecosystem wallet'
+        }, {
+          name: 'Pi Network',
+          url: 'https://minepi.com/Aitor69Alien',
+          icon: '/lovable-uploads/Clubs/PiNetwork.svg',
+          description: 'Mobile mining and wallet app'
+        }, {
+          name: 'Trust Wallet',
+          url: 'https://trustwallet.com/',
+          icon: '/lovable-uploads/Clubs/TrustWallet.svg',
+          description: 'Binance multi-chain wallet'
+        }]
+      }]
+    },
+
+    {
+      name: 'Δ EcoFlow',
+      description: "Shaping the planet's present through collaborative decision-making with budgets, proposals, and sustainable governance mechanisms for environmental impact.",
+      members: 161803,
+      icon: <Leaf className="h-6 w-6 text-alien-gold" />,
+      category: 'DAO',
+      categoryColor: 'bg-emerald-500/80 text-white border border-emerald-400/50',
+      bgColor: 'bg-gradient-to-br from-emerald-900/40 to-green-900/40',
+      sections: [{
+        title: 'Education & Academy',
+        description: 'Sustainability courses, green certifications, and climate action training programs',
+        icon: <Shield className="h-4 w-4" />,
+        color: 'bg-emerald-600/80',
+        platforms: [{
+          name: 'Academy',
+          url: '/academy'
+        }, {
+          name: 'Courses'
+        }, {
+          name: 'Workshops'
+        }, {
+          name: 'Certifications'
+        }]
+      }, {
+        title: 'Eco Products Catalog',
+        description: 'Organic apparel, hemp products, and sustainable accessories with carbon-neutral shipping',
+        icon: <Leaf className="h-4 w-4" />,
+        color: 'bg-green-600/80',
+        platforms: [{
+          name: 'Organic Hats'
+        }, {
+          name: 'Eco Jewelry'
+        }, {
+          name: 'Sustainable Apparel'
+        }, {
+          name: 'Hemp Products'
+        }]
+      }]
+    },
+    {
+      name: 'Δ GameFlow',
+      description: 'Discovering and creating digital gaming experiences across GameFi and competitive eSports platforms with blockchain integration and play-to-earn mechanics.',
+      members: 25890,
+      icon: <Gamepad2 className="h-6 w-6 text-alien-gold" />,
+      category: 'GameFi',
+      categoryColor: 'bg-purple-500/80 text-white border border-purple-400/50',
+      bgColor: 'bg-gradient-to-br from-purple-900/40 to-pink-900/40',
+      sections: [{
+        title: 'GameFi Platforms',
+        description: 'Play-to-earn blockchain games with NFT assets, in-game economies, and token rewards',
+        icon: <Gamepad2 className="h-4 w-4" />,
+        color: 'bg-purple-600/80',
+        platforms: [{
+          name: 'Axie Infinity',
+          url: 'https://app.axieinfinity.com/',
+          description: 'Play-to-earn creature battling game'
+        }, {
+          name: 'Community Gaming',
+          url: 'https://www.communitygaming.io/',
+          description: 'Tournament platform with rewards'
+        }, {
+          name: 'Decentraland',
+          url: 'https://decentraland.org/',
+          description: 'Virtual world with land NFTs'
+        }, {
+          name: 'GAMEE',
+          url: 'https://www.gamee.com/',
+          description: 'Mobile gaming with Arc8 tournaments'
+        }, {
+          name: 'GameFi.org',
+          url: 'https://gamefi.org/',
+          description: 'GameFi aggregator and launchpad'
+        }, {
+          name: 'Illuvium',
+          url: 'https://www.illuvium.io/',
+          description: 'Open-world RPG with NFT creatures'
+        }, {
+          name: 'MOBOX',
+          url: 'https://www.mobox.io/',
+          description: 'GameFi platform with NFT farming'
+        }, {
+          name: 'The Sandbox',
+          url: 'https://www.sandbox.game/',
+          description: 'Voxel metaverse and game creation'
+        }, {
+          name: 'Treasure',
+          url: 'https://treasure.lol/',
+          description: 'Decentralized gaming ecosystem'
+        }, {
+          name: 'Wombat',
+          url: 'https://go.getwombat.io/eN3a',
+          description: 'Multi-chain gaming wallet'
+        }]
+      }, {
+        title: 'eSports Platforms',
+        description: 'Professional gaming tournaments, team management, and competitive league platforms',
+        icon: <Zap className="h-4 w-4" />,
+        color: 'bg-red-600/80',
+        platforms: [{
+          name: 'Arena.gg',
+          url: 'https://www.arenagg.com/',
+          icon: '/lovable-uploads/Clubs/ArenaGG.png',
+          description: 'Tournament hosting and team management'
+        }, {
+          name: 'Battlefy',
+          url: 'https://battlefy.com/',
+          icon: '/lovable-uploads/Clubs/Battlefy.svg',
+          description: 'eSports tournament organization'
+        }, {
+          name: 'Blitz.gg',
+          url: 'https://blitz.gg/',
+          icon: '/lovable-uploads/Clubs/BlitzGG.svg',
+          description: 'Performance analytics and coaching'
+        }, {
+          name: 'ESL Gaming',
+          url: 'https://esl.com/',
+          icon: '/lovable-uploads/Clubs/ESL.svg',
+          description: "World's largest eSports company"
+        }, {
+          name: 'LVP Global',
+          url: 'https://lvp.global/',
+          icon: '/lovable-uploads/Clubs/LVP.PNG',
+          description: 'Professional league management'
+        }, {
+          name: 'ZEBEDEE',
+          url: 'https://zbd.link/hcHi/invite?af_sub1=S2S7IY',
+          icon: '/lovable-uploads/Clubs/ZBD.svg',
+          description: 'Bitcoin gaming and rewards platform'
+        }]
+      }]
+    },
+    {
+      name: 'Δ WeedFlow',
+      description: 'Exploring cannabis wellness, medical applications, and sustainable cultivation practices within legal frameworks and community education.',
+      members: 12438,
+      icon: <Leaf className="h-6 w-6 text-alien-gold" />,
+      category: 'Wellness',
+      categoryColor: 'bg-green-500/80 text-white border border-green-400/50',
+      bgColor: 'bg-gradient-to-br from-green-900/40 to-emerald-900/40',
+      sections: [{
+        title: 'Cannabis Education',
+        description: 'Medical cannabis research, strain guides, legal cultivation, and wellness applications',
+        icon: <Leaf className="h-4 w-4" />,
+        color: 'bg-green-600/80',
+        platforms: [{
+          name: 'Leafly',
+          url: 'https://www.leafly.com/',
+          icon: '/lovable-uploads/Clubs/Leafly.svg',
+          description: 'Cannabis strain database and reviews'
+        }, {
+          name: 'Weedmaps',
+          url: 'https://weedmaps.com/',
+          icon: '/lovable-uploads/Clubs/Weedmaps.svg',
+          description: 'Dispensary finder and education'
+        }, {
+          name: 'Cannabis Training',
+          description: 'Professional certification courses'
+        }, {
+          name: 'Medical Research',
+          description: 'Clinical studies and findings'
+        }]
+      }]
+    },
+    {
+      name: 'Δ XFlow (+NSFW)',
+      description: 'Adult-oriented digital experiences and NFT collections within a mature, consensual community framework for verified members only.',
+      members: 8962,
+      icon: <Eye className="h-6 w-6 text-alien-gold" />,
+      category: 'Adult',
+      categoryColor: 'bg-red-500/80 text-white border border-red-400/50',
+      bgColor: 'bg-gradient-to-br from-red-900/40 to-pink-900/40',
+      sections: [{
+        title: 'Adult Platforms',
+        description: 'Age-verified creator platforms and adult NFT marketplaces (18+ only, consensual content)',
+        icon: <Eye className="h-4 w-4" />,
+        color: 'bg-red-600/80',
+        platforms: [{
+          name: 'Fansly',
+          url: 'https://fansly.com/',
+          icon: '/lovable-uploads/Clubs/Fansly.svg',
+          description: 'Creator subscription platform'
+        }, {
+          name: 'OnlyFans',
+          url: 'https://onlyfans.com/',
+          icon: '/lovable-uploads/Clubs/OnlyFans.svg',
+          description: 'Content creator monetization'
+        }, {
+          name: 'Pornhub',
+          url: 'https://pornhub.com/',
+          icon: '/lovable-uploads/Clubs/Pornhub.svg',
+          description: 'Adult video sharing platform'
+        }, {
+          name: 'XHamster',
+          url: 'https://xhamster.com/',
+          icon: '/lovable-uploads/Clubs/XHamster.svg',
+          description: 'Adult content community'
+        }, {
+          name: 'YouPorn',
+          url: 'https://youporn.com/',
+          icon: '/lovable-uploads/Clubs/YouPorn.svg',
+          description: 'Premium adult video service'
+        }]
+      }]
+    }
+  ];
+
+  const otherClubs = [
+    {
+      name: 'Δ AIFlow',
+      description: 'Advancing artificial intelligence through decentralized computing, neural networks, and collaborative AI model development.',
+      members: 11234,
+      icon: <Zap className="h-6 w-6 text-alien-gold" />,
+      category: 'AI',
+      categoryColor: 'bg-violet-500/80 text-white border border-violet-400/50',
+      bgColor: 'bg-gradient-to-br from-violet-900/40 to-purple-900/40'
+    },
+    {
+      name: 'Δ BioFlow',
+      description: 'Advancing biotechnology and regenerative medicine through decentralized research, funding, and community-driven innovation.',
+      members: 6789,
+      icon: <Dna className="h-6 w-6 text-alien-gold" />,
+      category: 'BioTech',
+      categoryColor: 'bg-teal-500/80 text-white border border-teal-400/50',
+      bgColor: 'bg-gradient-to-br from-teal-900/40 to-cyan-900/40'
+    },
+    {
+      name: 'Δ CodeFlow',
+      description: 'Building decentralized applications, smart contracts, and blockchain solutions through collaborative coding and open-source development.',
+      members: 9234,
+      icon: <Rocket className="h-6 w-6 text-alien-gold" />,
+      category: 'Development',
+      categoryColor: 'bg-yellow-500/80 text-white border border-yellow-400/50',
+      bgColor: 'bg-gradient-to-br from-yellow-900/40 to-orange-900/40'
+    },
+    {
+      name: 'Δ DataFlow',
+      description: 'Harnessing the power of decentralized data analytics, AI, and machine learning to create intelligent insights and predictive models.',
+      members: 7512,
+      icon: <Database className="h-6 w-6 text-alien-gold" />,
+      category: 'Data Science',
+      categoryColor: 'bg-gray-500/80 text-white border border-gray-400/50',
+      bgColor: 'bg-gradient-to-br from-gray-900/40 to-slate-900/40'
+    },
+    {
+      name: 'Δ DeSciFlow',
+      description: 'Revolutionizing scientific research through decentralized funding, open-source data, and collaborative experimentation.',
+      members: 5921,
+      icon: <FlaskConical className="h-6 w-6 text-alien-gold" />,
+      category: 'Science',
+      categoryColor: 'bg-indigo-500/80 text-white border border-indigo-400/50',
+      bgColor: 'bg-gradient-to-br from-indigo-900/40 to-purple-900/40'
+    },
+    {
+      name: 'Δ EnergyFlow',
+      description: 'Powering the future with renewable energy, decentralized grids, and sustainable power solutions for communities worldwide.',
+      members: 8923,
+      icon: <Zap className="h-6 w-6 text-alien-gold" />,
+      category: 'Energy',
+      categoryColor: 'bg-yellow-500/80 text-white border border-yellow-400/50',
+      bgColor: 'bg-gradient-to-br from-yellow-900/40 to-amber-900/40'
+    },
+    {
+      name: 'Δ HealthFlow',
+      description: 'Revolutionizing healthcare through decentralized medical records, telemedicine, and community health initiatives.',
+      members: 10456,
+      icon: <Heart className="h-6 w-6 text-alien-gold" />,
+      category: 'Healthcare',
+      categoryColor: 'bg-red-500/80 text-white border border-red-400/50',
+      bgColor: 'bg-gradient-to-br from-red-900/40 to-pink-900/40'
+    },
+    {
+      name: 'Δ MetaFlow',
+      description: 'Exploring virtual worlds, metaverse platforms, and immersive VR/AR experiences in decentralized digital spaces.',
+      members: 9871,
+      icon: <Eye className="h-6 w-6 text-alien-gold" />,
+      category: 'Metaverse',
+      categoryColor: 'bg-cyan-500/80 text-white border border-cyan-400/50',
+      bgColor: 'bg-gradient-to-br from-cyan-900/40 to-blue-900/40'
+    },
+    {
+      name: 'Δ QuantumFlow',
+      description: 'Pioneering quantum computing applications, cryptography, and next-generation computational solutions for the blockchain.',
+      members: 4567,
+      icon: <Zap className="h-6 w-6 text-alien-gold" />,
+      category: 'Quantum',
+      categoryColor: 'bg-purple-500/80 text-white border border-purple-400/50',
+      bgColor: 'bg-gradient-to-br from-purple-900/40 to-indigo-900/40'
+    },
+    {
+      name: 'Δ ReFlow',
+      description: 'Regenerating ecosystems and promoting sustainable practices through decentralized finance, carbon offsetting, and community-led conservation.',
+      members: 8156,
+      icon: <Leaf className="h-6 w-6 text-alien-gold" />,
+      category: 'Sustainability',
+      categoryColor: 'bg-green-500/80 text-white border border-green-400/50',
+      bgColor: 'bg-gradient-to-br from-green-900/40 to-emerald-900/40'
+    },
+    {
+      name: 'Δ SocialFlow',
+      description: 'Empowering decentralized communities, DAOs, and social networks through blockchain-based governance, tokenized incentives, and collaborative decision-making.',
+      members: 10287,
+      icon: <Users className="h-6 w-6 text-alien-gold" />,
+      category: 'Social',
+      categoryColor: 'bg-pink-500/80 text-white border border-pink-400/50',
+      bgColor: 'bg-gradient-to-br from-pink-900/40 to-rose-900/40'
+    },
+    {
+      name: 'Δ SpaceFlow',
+      description: 'Advancing space exploration, satellite technology, and cosmic research through decentralized funding and collaboration.',
+      members: 5678,
+      icon: <Rocket className="h-6 w-6 text-alien-gold" />,
+      category: 'Space',
+      categoryColor: 'bg-indigo-500/80 text-white border border-indigo-400/50',
+      bgColor: 'bg-gradient-to-br from-indigo-900/40 to-blue-900/40'
+    }
+  ];
+
+  return (
+    <div className="relative flex flex-col flex-1">
+      <main className="relative z-10 flex-grow container mx-auto px-4 pt-20 pb-16">
+        <div className="max-w-6xl mx-auto">
+          {/* Page Header with Logo */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-alien-gold/20 rounded-full mb-6 border-2 border-alien-gold/40 backdrop-blur-md">
+              <img 
+                src="/lovable-uploads/ClubLogo.png" 
+                alt="Clubs Official Logo" 
+                className="h-14 w-14 object-contain"
+              />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold font-nasalization text-glow text-alien-green">
+              Clubs
+            </h1>
+          </div>
+          <section id="featured" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8 font-nasalization text-alien-green text-center">
+              Featured Clubs
+            </h2>
+            <div className="space-y-8">
+              {featuredClubs.map((club, index) => (
+                <FeaturedClubCard key={index} club={club} />
+              ))}
+            </div>
+          </section>
+
+          <section id="other" className="mb-16">
+            <h2 className="text-2xl font-bold mb-8 font-nasalization text-alien-green text-center">
+              Other Clubs
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherClubs.map((club, index) => (
+                <ClubCard key={index} club={club} />
+              ))}
+            </div>
+          </section>
+
+          <section id="eco-products">
+            <h2 className="text-2xl font-bold mb-8 font-nasalization text-alien-green text-center">
+              Eco Products
+            </h2>
+            <EcoProductCarousel />
+          </section>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default Clubs;
