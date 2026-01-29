@@ -25,7 +25,7 @@ function App() {
         icons: [`${window.location.origin}/lovable-uploads/ALogo.png`]
       }}
     >
-      <Router>
+      <Router basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
