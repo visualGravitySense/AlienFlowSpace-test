@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetPath } from '@/lib/utils';
 
 const Logo = () => {
   return (
     <div className="flex items-center gap-3 group">
       <Link to="/" className="flex items-center gap-2 transition-transform duration-500 hover:scale-105">
         <img 
-          src="/lovable-uploads/ALogo.png" 
+          src={getAssetPath("/lovable-uploads/ALogo.png")} 
           alt="AlienFlow Logo" 
           className="h-9 w-auto" 
         />
@@ -20,7 +21,7 @@ const Logo = () => {
       
       <Link to="/" className="hidden sm:block">
         <img 
-          src="/lovable-uploads/ET.png" 
+          src={getAssetPath("/lovable-uploads/ET.png")} 
           alt="Earth" 
           className="h-8 w-8 rounded-full hover:rotate-[360deg] transition-all duration-1000 border border-alien-green/20"
         />

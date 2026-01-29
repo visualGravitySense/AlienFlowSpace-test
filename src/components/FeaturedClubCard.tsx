@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ExternalLink, Users, Gamepad2, Leaf, DollarSign, Music, Shield, Zap } from 'lucide-react';
 import EcoProductCarousel from '@/components/EcoProductCarousel';
+import { getAssetPath } from '@/lib/utils';
 interface PlatformLink {
   name: string;
   url?: string;
@@ -129,7 +130,7 @@ const FeaturedClubCard = ({
                       <div className="w-12 h-12 mb-3 flex items-center justify-center bg-white/10 rounded-lg overflow-hidden">
                         {platform.icon ? (
                           <img
-                            src={platform.icon}
+                            src={platform.icon.startsWith("/lovable-uploads/") ? getAssetPath(platform.icon) : platform.icon}
                             alt={platform.name}
                             className="w-8 h-8 object-contain"
                             onError={(e) => {

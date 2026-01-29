@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Facebook, Instagram, Mail, Disc, Send, Github, Linkedin, MessageSquare, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getCurrentChineseYear } from '@/lib/chineseCalendar';
+import { getAssetPath } from '@/lib/utils';
 
 const Footer = () => {
   const chineseYear = getCurrentChineseYear();
@@ -39,7 +40,7 @@ const Footer = () => {
           
           <div className="lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <img src="/lovable-uploads/ALogo.png" alt="Logo" className="h-10 w-auto object-contain gold-glow" />
+              <img src={getAssetPath("/lovable-uploads/ALogo.png")} alt="Logo" className="h-10 w-auto object-contain gold-glow" />
               <span className="text-xl font-bold font-nasalization text-alien-green">AlienFlowSpace DAO</span>
             </div>
             <p className="text-alien-green/80 text-sm font-exo leading-relaxed max-w-md">

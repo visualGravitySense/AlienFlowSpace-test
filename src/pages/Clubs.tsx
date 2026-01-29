@@ -3,6 +3,7 @@ import FeaturedClubCard from '@/components/FeaturedClubCard';
 import EcoProductCarousel from '@/components/EcoProductCarousel';
 import { Users, Rocket, Calendar, Zap, Shield, DollarSign, Leaf, Gamepad2, Music, Heart, Eye, Dna, Database, FlaskConical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getAssetPath } from '@/lib/utils';
 
 type ClubProps = {
   name: string;
@@ -574,7 +575,7 @@ const Clubs: React.FC = () => {
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-alien-gold/20 rounded-full mb-6 border-2 border-alien-gold/40 backdrop-blur-md">
               <img 
-                src="/lovable-uploads/ClubLogo.png" 
+                src={getAssetPath("/lovable-uploads/ClubLogo.png")} 
                 alt="Clubs Official Logo" 
                 className="h-14 w-14 object-contain"
               />

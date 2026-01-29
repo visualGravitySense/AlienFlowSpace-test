@@ -2,23 +2,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
+import { getAssetPath } from '@/lib/utils';
+
 const spaces = [{
   id: 'academy',
   title: 'Academy',
   description: 'Unlock cosmic knowledge through comprehensive educational resources, courses, and tutorials in blockchain, finance, and sustainability.',
-  icon: <img src="/lovable-uploads/AcademyLogo.png" alt="Academy" className="h-10 w-10 object-contain" />,
+  icon: <img src={getAssetPath("/lovable-uploads/AcademyLogo.png")} alt="Academy" className="h-10 w-10 object-contain" />,
   link: '/academy'
 }, {
   id: 'clubs',
   title: 'Clubs',
   description: 'Join specialized communities focused on specific interests, technologies, and missions within the AlienFlowSpace ecosystem.',
-  icon: <img src="/lovable-uploads/ClubLogo.png" alt="Clubs" className="h-10 w-10 object-contain" />,
+  icon: <img src={getAssetPath("/lovable-uploads/ClubLogo.png")} alt="Clubs" className="h-10 w-10 object-contain" />,
   link: '/clubs'
 }, {
   id: 'conetworking',
   title: 'CoNetWorKing',
   description: 'Connect with like-minded individuals, projects, and initiatives across the multiverse to expand your network and opportunities.',
-  icon: <img src="/lovable-uploads/CoNetWorKingLogo.png" alt="CoNetWorKing" className="h-10 w-10 object-contain" />,
+  icon: <img src={getAssetPath("/lovable-uploads/CoNetWorKingLogo.png")} alt="CoNetWorKing" className="h-10 w-10 object-contain" />,
   link: '/conetworking'
 }];
 const ExploreSpacesSection = () => {

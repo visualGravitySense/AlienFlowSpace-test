@@ -11,6 +11,7 @@ import CoNetWorKing from './pages/CoNetWorKing';
 import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFound from './pages/NotFound';
+import { getAssetPath } from './lib/utils';
 import './index.css'; // Solo se importa el archivo final
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         name: 'Alien World',
         description: 'Alien World dApp',
         url: window.location.origin,
-        icons: [`${window.location.origin}/lovable-uploads/ALogo.png`]
+        icons: [`${window.location.origin}${getAssetPath("/lovable-uploads/ALogo.png")}`]
       }}
     >
       <Router basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>

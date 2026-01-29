@@ -6,6 +6,7 @@ import { GraduationCap, Users, Trophy, Shield, Zap, Globe, Leaf } from "lucide-r
 import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import LoadingScreen from "@/components/LoadingScreen";
+import { getAssetPath } from "@/lib/utils";
 
 const NFTGallery = lazy(() => import('@/components/NFTGallery'));
 
@@ -27,7 +28,7 @@ const About: React.FC = () => {
               whileHover={{ scale: 1.1, rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <img src="/lovable-uploads/ALogo.png" alt="About Official Logo" className="h-12 w-12 object-contain" />
+              <img src={getAssetPath("/lovable-uploads/ALogo.png")} alt="About Official Logo" className="h-12 w-12 object-contain" />
             </motion.div>
             <AnimatedText
               className="text-4xl md:text-5xl font-bold mb-6 font-nasalization text-glow leading-tight text-alien-green"
@@ -232,13 +233,13 @@ const About: React.FC = () => {
               </Link>
               <Link to="/clubs">
                 <Button className="bg-gradient-to-br from-alien-green to-alien-green-light hover:from-alien-green-light hover:to-alien-green text-alien-space-dark p-8 rounded-2xl text-center w-56 h-32 flex flex-col items-center justify-center shadow-2xl hover:shadow-alien-green/30 transition-all duration-300 hover:transform hover:scale-110">
-                  <img src="/lovable-uploads/ClubLogo.png" alt="Clubs Logo" className="h-12 w-12 mb-2 object-contain" />
+                  <img src={getAssetPath("/lovable-uploads/ClubLogo.png")} alt="Clubs Logo" className="h-12 w-12 mb-2 object-contain" />
                   <span className="font-semibold text-lg font-nasalization">Clubs</span>
                 </Button>
               </Link>
               <Link to="/conetworking">
                 <Button className="bg-gradient-to-br from-alien-gold to-alien-gold-light hover:from-alien-gold-light hover:to-alien-gold text-alien-space-dark p-8 rounded-2xl text-center w-56 h-32 flex flex-col items-center justify-center shadow-2xl hover:shadow-alien-gold/30 transition-all duration-300 hover:transform hover:scale-110">
-                  <img src="/lovable-uploads/CoNetWorKingLogo.png" alt="CoNetWorKing Logo" className="h-12 w-12 mb-2 object-contain" />
+                  <img src={getAssetPath("/lovable-uploads/CoNetWorKingLogo.png")} alt="CoNetWorKing Logo" className="h-12 w-12 mb-2 object-contain" />
                   <span className="font-semibold text-lg font-nasalization">CoNetWorKing</span>
                 </Button>
               </Link>
